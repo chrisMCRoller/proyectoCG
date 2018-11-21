@@ -120,7 +120,7 @@ void CFiguras::skybox2 (float altura, float largo, float profundidad, GLuint tex
 
 
 
-void CFiguras::prisma (float altura, float largo, float profundidad, GLuint text)  //Funcion creacion prisma
+void CFiguras::prisma (float largo, float altura, float profundidad, GLuint text)  //Funcion creacion prisma
 {
 
 	GLfloat vertice [8][3] = {
