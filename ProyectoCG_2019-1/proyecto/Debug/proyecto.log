@@ -1,11 +1,2 @@
-﻿  Camera.cpp
-  figuras.cpp
-d:\chris\gh\proyectocg\proyectocg_2019-1\proyecto\figuras.cpp(20): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-d:\chris\gh\proyectocg\proyectocg_2019-1\proyecto\figuras.cpp(84): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-d:\chris\gh\proyectocg\proyectocg_2019-1\proyecto\figuras.cpp(135): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-d:\chris\gh\proyectocg\proyectocg_2019-1\proyecto\figuras.cpp(324): warning C4101: 'theta': unreferenced local variable
-d:\chris\gh\proyectocg\proyectocg_2019-1\proyecto\figuras.cpp(324): warning C4101: 'phi': unreferenced local variable
-  Pfinal.cpp
-  texture.cpp
-  Generating Code...
+﻿  Pfinal.cpp
   proyecto.vcxproj -> D:\Chris\GH\proyectoCG\ProyectoCG_2019-1\Debug\proyecto.exe

@@ -40,7 +40,8 @@ CTexture text1;
 CTexture text2;
 CTexture text3;	//Flecha
 
-CTexture tree;
+CTexture tree,xmasTree;
+CTexture motherB;
 
 CFiguras sky,figurasC;
 
@@ -80,6 +81,7 @@ void edificio() {
 	glPopMatrix();
 
 	//Ala b
+	//Planta Baja
 	glPushMatrix();
 	glTranslatef(8.5, 1.5, -5.5);
 	figurasC.prisma(12, 3, 11, 0);
@@ -104,6 +106,13 @@ void edificio() {
 	glTranslatef(8.5, 13.5, -5.5);
 	figurasC.prisma(12, 3, 11, 0);
 	glPopMatrix();
+
+}
+
+void cpu() {
+
+	figurasC.prisma(0.20, 0.44, 0.46, 0);
+
 
 }
 
@@ -169,6 +178,68 @@ void arbol()
 			glPopMatrix();
 }
 
+void arbolNavidad()
+{
+	glPushMatrix();
+	glDisable(GL_LIGHTING);
+	glEnable(GL_ALPHA_TEST);
+	//glDisable(GL_DEPTH_TEST);   // Turn Depth Testing Off
+	glAlphaFunc(GL_GREATER, 0.1);
+	//glEnable(GL_BLEND);     // Turn Blending On
+	//glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+	glBindTexture(GL_TEXTURE_2D, xmasTree.GLindex);
+	glBegin(GL_QUADS); //plano
+	glColor3f(1.0, 1.0, 1.0);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(10.0, 20.0, 0.0);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(-10.0, 20.0, 0.0);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(45, 0, 1, 0);
+	glBegin(GL_QUADS); //plano
+	glColor3f(1.0, 1.0, 1.0);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(10.0, 20.0, 0.0);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(-10.0, 20.0, 0.0);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(-45, 0, 1, 0);
+	glBegin(GL_QUADS); //plano
+	glColor3f(1.0, 1.0, 1.0);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(10.0, 20.0, 0.0);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(-10.0, 20.0, 0.0);
+	glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	glRotatef(90, 0, 1, 0);
+	glBegin(GL_QUADS); //plano
+	glColor3f(1.0, 1.0, 1.0);
+	glNormal3f(0.0f, 0.0f, 1.0f);
+	glTexCoord2f(0.0f, 0.0f); glVertex3f(-10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 0.0f); glVertex3f(10.0, 0.0, 0.0);
+	glTexCoord2f(1.0f, 1.0f); glVertex3f(10.0, 20.0, 0.0);
+	glTexCoord2f(0.0f, 1.0f); glVertex3f(-10.0, 20.0, 0.0);
+	glEnd();
+	glDisable(GL_ALPHA_TEST);
+	//glDisable(GL_BLEND);        // Turn Blending Off
+	//glEnable(GL_DEPTH_TEST);    // Turn Depth Testing On
+	glEnable(GL_LIGHTING);
+
+	glPopMatrix();
+}
+
 			
 void InitGL ( GLvoid )     // Inicializamos parametros
 {
@@ -207,6 +278,14 @@ void InitGL ( GLvoid )     // Inicializamos parametros
 	tree.BuildGLTexture();
 	tree.ReleaseImage();
 
+	xmasTree.LoadBMP("texturasC/arbolNavidad.bmp");
+	tree.BuildGLTexture();
+	tree.ReleaseImage();
+
+	motherB.LoadTGA("02.tga");
+	tree.BuildGLTexture();
+	tree.ReleaseImage();
+
 
 	//END NEW//////////////////////////////
 
@@ -218,7 +297,7 @@ void pelota(void) {
 	glPushMatrix();
 
 	glTranslatef(posXPelotaAnt + posXPelota - 30, posYPelotaAnt + posYPelota, -50.0);
-	figurasC.esfera(2.0, 10, 10, text2.GLindex);
+	figurasC.esfera(2.0, 10, 10, 0);
 
 	glPopMatrix();
 }
@@ -251,8 +330,12 @@ void display ( void )   // Creamos la funcion donde se dibuja
 				glColor3f(1.0,1.0,1.0);
 			glPopMatrix();
 
-			edificio();
-
+			//edificio();
+			glTranslatef(0, 5, 0);
+			//figurasC.plano(1,1,motherB.GLindex);
+			//pelota();
+			//arbol();
+			figurasC.prisma(1, 1, 1, motherB.GLindex);
 
 		glPopMatrix(); 
 
